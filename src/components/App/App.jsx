@@ -43,10 +43,6 @@ export const App = () => {
   };
 
   const onDelete = itemId => {
-    const afterRemovigContacts = JSON.parse(
-      window.localStorage.getItem('contacts')
-    ).filter(contact => contact.id !== itemId);
-    window.localStorage.setItem('contacts', afterRemovigContacts);
     setContacts(prevContacts =>
       prevContacts.filter(contact => contact.id !== itemId)
     );
