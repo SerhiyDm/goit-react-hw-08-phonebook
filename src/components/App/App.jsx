@@ -32,15 +32,10 @@ export const App = () => {
   };
   const getFilterInputValue = e => setFilter(e.currentTarget.value);
 
-  const getDataForRenderList = (contacts, filter) => {
-    if (filter !== '') {
-      const filteredContacts = contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      );
-      return filteredContacts ? filteredContacts : contacts;
-    }
-    return contacts;
-  };
+  const getDataForRenderList = () =>
+    contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
 
   const onDelete = itemId => {
     setContacts(prevContacts =>
