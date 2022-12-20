@@ -53,10 +53,7 @@ export const App = () => {
         value={filter}
       />
       {contacts.length !== 0 && (
-        <Contacts
-          options={getDataForRenderList(contacts, filter)}
-          handleClick={onDelete}
-        />
+        <Contacts options={getDataForRenderList()} handleClick={onDelete} />
       )}
       <GlobalStyles />
     </AppWraperStyled>
