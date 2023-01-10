@@ -1,30 +1,14 @@
 import PropTypes from 'prop-types';
 import { LabelStyled, InputStyled } from './Input.styled';
 
-export const Input = ({
-  handleChange,
-  text = '',
-  type,
-  name,
-  pattern,
-  title,
-  value,
-}) => (
+export const Input = ({ text = '', type, name, pattern, title }) => (
   <LabelStyled>
     {text}
-    <InputStyled
-      onChange={handleChange}
-      type={type}
-      name={name}
-      pattern={pattern}
-      title={title}
-      value={value}
-    />
+    <InputStyled type={type} name={name} pattern={pattern} title={title} />
   </LabelStyled>
 );
 
 Input.propTypes = {
-  handleChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string.isRequired,

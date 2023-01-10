@@ -9,11 +9,7 @@ export const LabelStyled = styled.label`
   cursor: pointer;
 `;
 
-export const InputStyled = styled.input.attrs(p => ({
-  name: 'filter',
-  type: 'text',
-  value: p.value,
-}))`
+export const InputStyled = styled.input`
   padding: 7px 15px;
   border-radius: 4px;
   border: none;
