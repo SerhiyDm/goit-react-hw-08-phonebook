@@ -38,8 +38,6 @@ const contactsSlice = createSlice({
 
 export const { add, remove } = contactsSlice.actions;
 
-export const getContactsData = state => state.contacts.contactsData;
-
 const persistConfig = {
   key: 'contactsData',
   storage,

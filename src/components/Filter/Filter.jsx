@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { filtered } from 'redux/filterSlice';
+import { filtered, getFilterValue } from 'redux/Filter';
 import { LabelStyled, InputStyled } from './Filter.styled';
 
 export const Filter = () => {
@@ -10,7 +10,7 @@ export const Filter = () => {
       {text}
       <InputStyled
         onChange={e => dispatch(filtered(e.target.value))}
-        value={useSelector(state => state.filter.value)}
+        value={useSelector(getFilterValue)}
       />
     </LabelStyled>
   );

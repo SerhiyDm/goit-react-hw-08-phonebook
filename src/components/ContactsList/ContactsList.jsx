@@ -1,12 +1,13 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { List } from './ContactsList.styled';
 import { ContactsItem } from '../ContactsItem/ContactsItem';
-import { useSelector } from 'react-redux';
-import { getContactsData } from 'redux/contactsSlice';
-import { useEffect, useState } from 'react';
+import { getContactsData } from 'redux/Contacts';
+import { getFilterValue } from 'redux/Filter';
 
 export const Contacts = () => {
   const contactsState = useSelector(getContactsData);
-  const filterState = useSelector(state => state.filter.value);
+  const filterState = useSelector(getFilterValue);
   const [renderData, setRenderdata] = useState(contactsState);
   useEffect(() => {
     const data = contactsState.filter(({ name }) =>

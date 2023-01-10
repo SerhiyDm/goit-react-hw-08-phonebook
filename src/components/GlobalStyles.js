@@ -43,4 +43,9 @@ h1 {
 h2 {
   font-size: 30px;
 }
+
+h3 {
+  font-size: 1.5em;
+  color: #9da5a8;
+}
 `;
