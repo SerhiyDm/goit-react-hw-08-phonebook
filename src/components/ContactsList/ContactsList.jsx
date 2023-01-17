@@ -11,6 +11,6 @@ export const Contacts = () => {
       ))}
     </List>
   ) : (
-    <h2>🤷‍♂️Сontacts containing such symbols are not available</h2>
+    <h2>🤷‍♂️Сontacts containing such symbols are not available...</h2>
   );
 };
