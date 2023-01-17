@@ -13,6 +13,7 @@ export const InputStyled = styled.input`
   padding: 7px 15px;
   border-radius: 4px;
   border: none;
+  background-color: rgba(251, 255, 255, 0);
   cursor: pointer;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
@@ -26,4 +27,10 @@ export const InputStyled = styled.input`
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75) inset;
   }
+`;
+
+export const FilterContainer = styled.div`
+  position: ${({ isOnFocus }) => (isOnFocus ? 'fixed' : 'static')};
+  top: 10px;
+  left: 10px;
 `;

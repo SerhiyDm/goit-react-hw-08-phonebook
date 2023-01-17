@@ -1,25 +1,16 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { List } from './ContactsList.styled';
 import { ContactsItem } from '../ContactsItem/ContactsItem';
-import { getContactsData } from 'redux/Contacts';
-import { getFilterValue } from 'redux/Filter';
-
+import { selectRenderdata } from 'redux/selectors';
 export const Contacts = () => {
-  const contactsState = useSelector(getContactsData);
-  const filterState = useSelector(getFilterValue);
-  const [renderData, setRenderdata] = useState(contactsState);
-  useEffect(() => {
-    const data = contactsState.filter(({ name }) =>
-      name.toLowerCase().includes(filterState.toLowerCase())
-    );
-    setRenderdata(data);
-  }, [contactsState, filterState]);
-  return (
+  const renderData = useSelector(selectRenderdata);
+  return renderData.length > 0 ? (
     <List>
-      {renderData.map(({ id, name, number }) => (
-        <ContactsItem key={id} name={name} number={number} id={id} />
+      {renderData.map(({ name, phone, id }) => (
+        <ContactsItem key={id} name={name} number={phone} id={id} />
       ))}
     </List>
+  ) : (
+    <h2>🤷‍♂️Сontacts containing such symbols are not available</h2>
   );
 };

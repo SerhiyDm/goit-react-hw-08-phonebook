@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { add, getContactsData } from 'redux/Contacts';
+import { selectContactsData } from 'redux/selectors';
 import { Button } from 'components/ContactForm/Button/Button';
 import { Input } from 'components/ContactForm/Input/Input';
 import { FormStyled } from './ContactForm.styled';
+import { addContact } from 'redux/operations';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contactsState = useSelector(getContactsData);
+  const contactsState = useSelector(selectContactsData);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export const ContactForm = () => {
       form.reset();
       return;
     }
-    dispatch(add({ name, number }));
+    dispatch(addContact({ name, number }));
     form.reset();
   };
 
