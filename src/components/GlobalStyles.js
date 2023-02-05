@@ -4,13 +4,18 @@ import 'modern-normalize';
 export const GlobalStyles = createGlobalStyle`
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Kanit', sans-serif;
+font-family: 'Permanent Marker', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e0cccc;
+
 }
 
+a {
+text-decoration: none;
+color: currentColor;
+}
 
 h1,
 h2,
@@ -32,14 +37,11 @@ code {
     monospace;
 }
 
-h1, h2 {
-  color: #454545;
+h1{
+  color: #e0cccc;
+  font-size: 64px;
+  letter-spacing:.1em ;
 }
-
-h1 {
-  font-size: 35px;
-}
-
 h2 {
   font-size: 30px;
 }

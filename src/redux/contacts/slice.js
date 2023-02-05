@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const extraActions = [fetchContacts, addContact, deleteContact];
 const getActions = type => extraActions.map(action => action[type]);
@@ -8,7 +8,7 @@ const fetchContactsFulfilledReducer = (state, action) => {
   state.items = action.payload;
 };
 const addContactFulfilledReducer = (state, action) => {
-  state.items.push(action.payload);
+  state.items.unshift(action.payload);
 };
 
 const deleteContactFulfilledReducer = (state, action) => {

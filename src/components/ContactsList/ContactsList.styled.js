@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  list-style: disc;
-  display: inline-block;
-  font-weight: 500;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
   font-size: 20px;
 `;

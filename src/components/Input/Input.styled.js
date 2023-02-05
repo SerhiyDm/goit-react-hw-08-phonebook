@@ -5,11 +5,14 @@ export const LabelStyled = styled.label`
   flex-direction: column;
   line-height: 35px;
   font-size: 24px;
-  color: #757575;
+  color: #e0cccc;
   cursor: pointer;
 `;
 
-export const InputStyled = styled.input.attrs({ required: true })`
+export const InputStyled = styled.input.attrs(({autoFocus}) => ({
+  required: true,
+  autoFocus,
+}))`
   width: 95%;
   padding: 7px 15px;
   border-radius: 4px;
@@ -20,6 +23,8 @@ export const InputStyled = styled.input.attrs({ required: true })`
   -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   font-size: 18px;
   line-height: 25px;
+  background-color: #142a40;
+  color: #e0cccc;
   &:focus {
     border: none;
     outline: none;

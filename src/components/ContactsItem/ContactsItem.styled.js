@@ -1,27 +1,26 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button.attrs({ type: 'button' })`
-  padding: 0 10px;
-  height: 1.1em;
-  margin-left: 10px;
-  background-color: #f1f1f1;
+
+export const Contact = styled.li`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 15px;
   border-radius: 4px;
   border: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 2px 0px rgb(0, 0, 0);
-  -webkit-box-shadow: 0px 0px 2px 0px rgb(0, 0, 0);
-  -moz-box-shadow: 0px 0px 2px 0px rgb(0, 0, 0);
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  color: #353535;
+  background-color: rgba(251, 255, 255, 0);
+  cursor: ${({ cursor }) => (cursor ? cursor : 'auto')};
+  box-shadow: 0px 0px 2px 0px rgba(177, 221, 244, 0.816);
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(177, 221, 244, 0.816);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(177, 221, 244, 0.816);
+  font-weight: 700;
+  transition: transform 300ms linear;
   &:hover {
-    background-color: #f3f3f3;
-  }
-
-  &:active {
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) inset;
-    -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) inset;
-    -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: 0px 0px 5px 0px rgba(177, 221, 244, 0.816);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(177, 221, 244, 0.816);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(177, 221, 244, 0.816);
+    transform: scale(1.05);
   }
 `;
+

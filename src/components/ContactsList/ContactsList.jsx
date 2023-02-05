@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux';
 import { List } from './ContactsList.styled';
 import { ContactsItem } from '../ContactsItem/ContactsItem';
-import { selectRenderdata } from 'redux/selectors';
+import { useContacts } from 'redux/hooks';
 export const Contacts = () => {
-  const renderData = useSelector(selectRenderdata);
+  const { renderData } = useContacts();
   return renderData.length > 0 ? (
     <List>
-      {renderData.map(({ name, phone, id }) => (
-        <ContactsItem key={id} name={name} number={phone} id={id} />
+      {renderData.map(({ name, number, id }) => (
+        <ContactsItem key={id} name={name} number={number} id={id} />
       ))}
     </List>
   ) : (

@@ -7,11 +7,11 @@ export const NotifyError = message =>
     position: 'top-center',
 
     style: {
-      backgroundColor: 'red',
-      opacity: 0.5,
+      backgroundColor: 'rgba(227, 25, 25, 0.409)',
       width: '50vw',
-      color: 'white',
+      color: 'rgba(27, 16, 16, 0.947)',
       fontSize: '1.5em',
+      fontWeight: '900',
     },
     icon: '🤔',
     ariaProps: {

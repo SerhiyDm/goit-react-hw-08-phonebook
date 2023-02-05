@@ -1,34 +1,32 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { filtered } from 'redux/filterSlice';
-import { selectFilterValue } from 'redux/selectors';
-import { LabelStyled, InputStyled, FilterContainer } from './Filter.styled';
+import { useContacts } from 'redux/hooks';
+import { LabelStyled, InputStyled } from './Filter.styled';
 
-export const Filter = () => {
+export const Filter = ({ offSearch }) => {
   const dispatch = useDispatch();
-  const text = 'Find contacts by name';
-  const [isOnFocus, setIsOnFocus] = useState(false);
-  const filterOn = () => {
-    window.scrollBy({
-      top: 350,
-      behavior: 'smooth',
-    });
-    setIsOnFocus(true);
-  };
+  const { filterValue } = useContacts();
+
   const filterOff = () => {
-    setIsOnFocus(false);
+    offSearch();
+  };
+  const handleChange = e => {
+    dispatch(filtered(e.target.value));
   };
   return (
-    <FilterContainer isOnFocus={isOnFocus}>
+    <>
       <LabelStyled>
-        {text}
         <InputStyled
-          onChange={e => dispatch(filtered(e.target.value))}
-          onFocus={filterOn}
+          onChange={handleChange}
           onBlur={filterOff}
-          value={useSelector(selectFilterValue)}
+          value={filterValue}
         />
       </LabelStyled>
-    </FilterContainer>
+    </>
   );
+};
+
+Filter.propTypes = {
+  offSearch: PropTypes.func.isRequired,
 };
