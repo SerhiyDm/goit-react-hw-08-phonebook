@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { ButtonLink2 } from 'components/Button/Button.styled';
 import { useAuth } from 'redux/hooks';
 import { logout } from 'redux/auth';
+import { NotifyOk } from 'components/Notify';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,11 @@ export const UserMenu = () => {
   const { userName } = useAuth();
 
   const out = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => {
+        NotifyOk('✔');
+      });
   };
   return (
     <UserMenuStyled>

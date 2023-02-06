@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Form } from 'components/Form/Form';
 import { register } from 'redux/auth';
+import { NotifyOk } from 'components/Notify';
 
 const params1 = {
   text1: 'Name',
@@ -39,7 +40,10 @@ export const RegisterView = () => {
         email: form.elements.registerEmail.value,
         password: form.elements.registerPassword.value,
       })
-    );
+    ).unwrap()
+    .then(() => {
+      NotifyOk('✔');
+    });
     form.reset();
   };
 

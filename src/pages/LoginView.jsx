@@ -1,4 +1,5 @@
 import { Form } from 'components/Form/Form';
+import { NotifyOk } from 'components/Notify';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth';
 const params1 = {
@@ -28,7 +29,10 @@ const LoginView = () => {
         email: form.elements.loginEmail.value,
         password: form.elements.loginPassword.value,
       })
-    );
+    ).unwrap()
+    .then(() => {
+      NotifyOk('✔');
+    });
     form.reset();
   };
   return (

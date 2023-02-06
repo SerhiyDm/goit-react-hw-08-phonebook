@@ -5,13 +5,18 @@ import { useDispatch } from 'react-redux';
 import { Contact } from './ContactsItem.styled';
 import { Modal } from 'components/Modal/Modal';
 import { ButtonCall, ButtonDelete } from './ContactsButtons/ContactsButtons';
+import { NotifyOk } from 'components/Notify';
 export const ContactsItem = ({ name, number, id }) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
   const openModal = () => setVisible(true);
   const onDelete = () => {
-    dispatch(deleteContact(id));
+    dispatch(deleteContact(id))
+      .unwrap()
+      .then(() => {
+        NotifyOk('✔');
+      });
     setVisible(false);
   };
   const onClose = () => setVisible(false);

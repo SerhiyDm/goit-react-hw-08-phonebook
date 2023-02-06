@@ -20,6 +20,25 @@ export const NotifyError = message =>
     },
   });
 
+export const NotifyOk = message =>
+  toast.error(message, {
+    duration: 3000,
+    position: 'top-center',
+
+    style: {
+      backgroundColor: 'rgba(37, 230, 165, 0.2)',
+      width: '30vw',
+      color: 'rgba(27, 16, 16, 0.947)',
+      fontSize: '1.5em',
+      fontWeight: '900',
+    },
+    icon: '',
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+
 NotifyError.propTypes = {
   message: PropTypes.string.isRequired,
 };

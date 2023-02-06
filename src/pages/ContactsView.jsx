@@ -4,7 +4,7 @@ import { addContact, fetchContacts } from 'redux/contacts';
 import { Form } from 'components/Form/Form';
 import { Contacts } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
-import { NotifyError } from 'components/Notify';
+import { NotifyError, NotifyOk } from 'components/Notify';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 import { ContactsPanel } from 'components/ContactsPanel';
@@ -55,7 +55,11 @@ const ContactsView = () => {
       form.reset();
       return;
     }
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, number }))
+      .unwrap()
+      .then(() => {
+        NotifyOk('✔');
+      });
     form.reset();
     setModalVisible(false);
   };
