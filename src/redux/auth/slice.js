@@ -6,97 +6,70 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
   error: null,
 };
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+    [register.pending](state) {
+      state.isLoading = true;
+    },
     [register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isLoading = false;
       state.error = null;
     },
     [register.rejected](state, action) {
+      state.isLoading = false;
       state.error = '🚫❗❗ The data is entered incorrectly';
+    },
+    [login.pending](state) {
+      state.isLoading = true;
     },
     [login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
+      state.isLoading = false;
     },
     [login.rejected](state, action) {
       state.error = '🚫❗❗ Data entry error!';
+      state.isLoading = false;
+    },
+    [logout.pending](state) {
+      state.isLoading = true;
     },
     [logout.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
       state.error = null;
+      state.isLoading = false;
     },
     [logout.rejected](state, action) {
       state.error = action.payload;
+      state.isLoading = false;
     },
     [refresh.pending](state) {
+      state.isLoading = true;
       state.isRefreshing = true;
     },
     [refresh.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.isLoading = false;
     },
     [refresh.rejected](state) {
       state.isRefreshing = false;
+      state.isLoading = false;
     },
   },
 });
 export const authReducer = authSlice.reducer;
-// ---------------------так ⬇ не працють з pending та rejected------------------//
-//    import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// const logoutFulfilledReducer = state => {
-//   state.user = { name: null, email: null };
-//   state.token = null;
-//   state.isLoggedIn = false;
-//   state.error = null;
-// };
-// const refreshReducer = state => {
-//   state.isRefreshing = false;
-// };
-// const refreshPendingReducer = state => (state.isRefreshing = true);
-
-// const regLoginFulfilledReducer = (state, action) => {
-//   state.token = action.payload.token;
-//   state.error = null;
-// };
-// const fulfilledReducer = (state, action) => {
-//   state.user = action.payload;
-//   state.isLoggedIn = true;
-// };
-// const rejectedReducer = (state, action) => {
-//   console.log(action.payload);
-//   state.error = action.payload;
-// };
-
-//builder =>
-//   builder
-//     .addCase(register.fulfilled, regLoginFulfilledReducer)
-//     .addCase(login.fulfilled, regLoginFulfilledReducer)
-//     .addCase(logout.fulfilled, logoutFulfilledReducer)
-//     .addCase(refresh.fulfilled, refreshReducer)
-//     .addCase(refresh.pending, refreshPendingReducer)
-//     .addCase(refresh.rejected, refreshReducer)
-//     .addMatcher(
-//       isAnyOf(register.fulfilled, login.fulfilled, refresh.fulfilled),
-//       fulfilledReducer
-//     )
-//     .addMatcher(
-//       isAnyOf(
-//         refresh.rejected,
-//         login.rejected,
-//         logout.rejected,
-//         register.rejected
-//       ),
-//       rejectedReducer
-//     ),

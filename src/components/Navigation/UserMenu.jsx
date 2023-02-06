@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 import { useLocation } from 'react-router-dom';
 import { ButtonLink2 } from 'components/Button/Button.styled';
-import { useAuth } from 'redux/hooks';
+import { useAuth } from 'hooks';
 import { logout } from 'redux/auth';
 import { NotifyOk } from 'components/Notify';
 

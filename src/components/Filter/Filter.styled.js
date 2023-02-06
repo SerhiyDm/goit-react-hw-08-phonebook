@@ -13,6 +13,7 @@ export const InputStyled = styled.input.attrs({
   autoFocus: true,
   placeholder: 'Find contacts by name',
 })`
+  top: 20%;
   padding: 7px 15px;
   border-radius: 4px;
   border: none;
@@ -31,5 +32,20 @@ export const InputStyled = styled.input.attrs({
     box-shadow: 0px 0px 4px 0px rgba(177, 221, 244, 0.816) inset;
     -webkit-box-shadow: 0px 0px 4px 0px rgba(177, 221, 244, 0.816) inset;
     -moz-box-shadow: 0px 0px 4px 0px rgba(177, 221, 244, 0.816) inset;
+  }
+`;
+export const FilterWraper = styled.div`
+  position: fixed;
+  top: 30%;
+  & > button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+  }
+  & > button:hover,
+  & > button:active {
+    transform: translateY(-50%);
+    color: red;
   }
 `;

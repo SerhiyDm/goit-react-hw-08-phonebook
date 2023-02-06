@@ -4,15 +4,16 @@ import { lazy, useEffect } from 'react';
 import { SharedLayout } from '../SharedLayout/SharedLayout';
 import { useDispatch } from 'react-redux';
 import { refresh } from 'redux/auth';
-import { useAuth } from 'redux/hooks/useAuth';
-import { RefreshingPage } from './refreshingPage/refreshingPage';
+import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictrdRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { NotifyError } from 'components/Notify';
+import { ServicePage } from 'components/App/ServisePage/ServicePage';
 const RegisterView = lazy(() => import('pages/RegisterView'));
 const LoginView = lazy(() => import('pages/LoginView'));
 const ContactsView = lazy(() => import('pages/ContactsView'));
 const Home = lazy(() => import('pages/Home'));
+const PageNotFound = lazy(() => import('pages/PageNotFound'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, authError } = useAuth();
@@ -26,7 +27,7 @@ export const App = () => {
   }, [authError]);
 
   return isRefreshing ? (
-    <RefreshingPage />
+    <ServicePage text={'Please wait, data is being downloaded ...'} />
   ) : (
     <>
       <Routes>
@@ -51,7 +52,7 @@ export const App = () => {
             path="contacts"
             element={<PrivateRoute component={ContactsView} redirectTo="/" />}
           />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
       <GlobalStyles />

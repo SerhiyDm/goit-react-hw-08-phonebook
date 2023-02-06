@@ -1,4 +1,4 @@
-import { useAuth } from 'redux/hooks';
+import { useAuth } from 'hooks';
 import { HomeLink } from './LogoHomeLink';
 import { Nav } from './Navigation.styled';
 import { RegisterLoginMenu } from './RegisterLoginMenu';

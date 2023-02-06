@@ -1,6 +1,6 @@
 import { List } from './ContactsList.styled';
 import { ContactsItem } from '../ContactsItem/ContactsItem';
-import { useContacts } from 'redux/hooks';
+import { useContacts } from 'hooks';
 export const Contacts = () => {
   const { renderData } = useContacts();
   return renderData.length > 0 ? (

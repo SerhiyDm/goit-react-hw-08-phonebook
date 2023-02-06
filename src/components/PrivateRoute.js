@@ -1,4 +1,4 @@
-import { useAuth } from 'redux/hooks';
+import { useAuth } from 'hooks';
 import { Navigate } from 'react-router-dom';
 
 export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {

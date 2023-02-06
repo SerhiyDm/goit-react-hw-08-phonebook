@@ -10,7 +10,7 @@ import { Modal } from 'components/Modal/Modal';
 import { ContactsPanel } from 'components/ContactsPanel';
 
 import { filtered } from 'redux/filterSlice';
-import { useContacts } from 'redux/hooks';
+import { useContacts } from 'hooks';
 
 const params = {
   text1: 'Name',

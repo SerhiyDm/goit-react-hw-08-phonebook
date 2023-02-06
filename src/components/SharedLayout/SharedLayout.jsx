@@ -4,9 +4,14 @@ import { Outlet } from 'react-router-dom';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Loader } from '../Loader/Loader';
 import { Toaster } from 'react-hot-toast';
-import { useContacts } from 'redux/hooks';
+import { useContacts, useAuth } from 'hooks';
 export const SharedLayout = () => {
   const { isLoading, error } = useContacts();
+  const { authLoading, authError } = useAuth();
+  const contactsLoading = isLoading && !error;
+  const authloading = authLoading && !authError;
+  console.log(authLoading);
+
   return (
     <AppWraperStyled>
       <Header>
@@ -14,7 +19,7 @@ export const SharedLayout = () => {
       </Header>
       <Toaster />
       <MainContainer>
-        {isLoading && !error && <Loader />}
+        {(contactsLoading || authloading) && <Loader />}
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
